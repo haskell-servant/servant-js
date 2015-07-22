@@ -1,0 +1,86 @@
+name:                servant-js
+version:             0.4.1
+synopsis:            Automatically derive javascript functions to query servant webservices.
+description:
+  Automatically derive jquery-based javascript functions to query servant webservices.
+  .
+  Supports deriving functions using vanilla javascript AJAX requests, Angular or JQuery.
+  .
+  You can find an example <https://github.com/haskell-servant/servant/blob/master/servant-jquery/examples/counter.hs here>
+  which serves the generated javascript to a webpage that allows you to trigger
+  webservice calls.
+  .
+  <https://github.com/haskell-servant/servant/blob/master/servant-jquery/CHANGELOG.md CHANGELOG>
+license:             BSD3
+license-file:        LICENSE
+author:              Alp Mestanogullari
+maintainer:          alpmestan@gmail.com
+copyright:           2014 Alp Mestanogullari
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+homepage:            http://haskell-servant.github.io/
+Bug-reports:         http://github.com/haskell-servant/servant/issues
+extra-source-files:
+  CHANGELOG.md
+  README.md
+source-repository head
+  type: git
+  location: http://github.com/haskell-servant/servant.git
+
+flag example
+  description: Build the example too
+  manual: True
+  default: False
+
+library
+  exposed-modules:     Servant.JS
+                       Servant.JS.Angular
+                       Servant.JS.JQuery
+                       Servant.JS.Vanilla
+  other-modules:       Servant.JS.Internal
+  build-depends:       base >=4.5 && <5
+                     , charset
+                     , lens >= 4
+                     , servant == 0.4.*
+                     , text
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  ghc-options:         -Wall
+
+executable counter
+  main-is: counter.hs
+  ghc-options: -O2 -Wall
+  hs-source-dirs: examples
+
+  if flag(example)
+    buildable: True
+  else
+    buildable: False
+
+  build-depends:
+      aeson
+    , base
+    , filepath
+    , servant == 0.4.*
+    , servant-server == 0.4.*
+    , servant-js == 0.4.*
+    , stm
+    , transformers
+    , warp
+  default-language: Haskell2010
+
+test-suite spec
+  type:              exitcode-stdio-1.0
+  hs-source-dirs:    test
+  ghc-options:       -Wall
+  main-is:           Spec.hs
+  build-depends:
+      base == 4.*
+    , lens
+    , servant-js
+    , servant
+    , hspec >= 2.0
+    , hspec-expectations
+    , language-ecmascript >= 0.16
+  default-language: Haskell2010
