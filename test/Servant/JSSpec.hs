@@ -20,9 +20,9 @@ import           Language.ECMAScript3.Parser  (program, parse)
 import           Prelude                      ()
 import           Prelude.Compat
 import           Test.Hspec  hiding (shouldContain, shouldNotContain)
-import           Test.QuickCheck                            (Arbitrary (..),
-                                                             choose, listOf,
-                                                             property)
+import           Test.QuickCheck              (Arbitrary (..),
+                                               choose, listOf,
+                                               property)
 
 import           Servant.API.Internal.Test.ComprehensiveAPI
 import           Servant.API.ContentTypes
@@ -157,18 +157,21 @@ angularSpec test = describe specLabel $ do
         ngOpts = NG.defAngularOptions { NG.serviceName = testName }
         genJS req = NG.angularService ngOpts req
 
-instance Arbitrary T.Text where
-    -- Our arbitrary instance is generating only ASCII, since language-ecmascript lexer
+newtype ASCII = ASCII {getASCII :: T.Text} deriving (Show)
+
+instance Arbitrary ASCII where
+    -- Our arbitrary instance is generating only ASCII, since the language-ecmascript's lexer
     -- is currently (October 2016) still a bit naïve
-    arbitrary = fmap T.pack $ listOf $ choose (minBound, '\127')
-    shrink xs = T.pack <$> shrink (T.unpack xs)
+    arbitrary = fmap (ASCII . T.pack) $ listOf $ choose (minBound, '\127')
+    shrink xs = (ASCII . T.pack) <$> shrink (T.unpack $ getASCII xs)
 
 internalSpec :: Spec
 internalSpec = describe "Internal" $ do
     it "should generate only valid javascript identifiers for any ASCII route" $ do
-        let parseIdentifier = fmap (T.pack . filter (< '\65536')) . parse identifier ""
-        property $ \x -> let valid = toValidFunctionName x in
+        let parseIdentifier = fmap T.pack. parse identifier ""
+        property $ \x -> let valid = toValidFunctionName $ getASCII x in
                          Right valid == parseIdentifier valid
+
     it "should generate a valid javascript identifier when supplied with hyphens, unicode whitespace, non-bmp unicode" $ do
         toValidFunctionName "a_--a\66352b\6158c\65075" `shouldBe` "a_abc\65075"
 
