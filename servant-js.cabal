@@ -10,7 +10,7 @@ description:
   which serves the generated javascript to a webpage that allows you to trigger
   webservice calls.
   .
-  <https://github.com/haskell-servant/servant-js/blob/master/servant-js/CHANGELOG.md CHANGELOG>
+  <https://github.com/haskell-servant/servant-js/blob/master/CHANGELOG.md CHANGELOG>
 license:             BSD3
 license-file:        LICENSE
 author:              Servant Contributors
