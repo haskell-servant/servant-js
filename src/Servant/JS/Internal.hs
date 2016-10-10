@@ -1,5 +1,4 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE ViewPatterns #-}
 
 module Servant.JS.Internal
   ( JavaScriptGenerator
@@ -116,25 +115,30 @@ toValidFunctionName t =
       setFirstChar x `T.cons` T.filter remainder xs
     Nothing -> "_"
   where
-    setFirstChar c = if firstChar c then c else '_'
-    firstChar c = prefixOK c || Set.member c firstLetterOK
-    remainder c = prefixOK c || Set.member c remainderOK
-    prefixOK c = c `elem` ['$','_']
-    firstLetterOK = mconcat
-                      [ Set.lowercaseLetter
+    setFirstChar c = if Set.member c firstLetterOK then c else '_'
+    remainder c = Set.member c remainderOK
+    firstLetterOK = (filterBmpChars $ mconcat
+                      [ Set.fromDistinctAscList "$_"
+                      , Set.lowercaseLetter
                       , Set.uppercaseLetter
                       , Set.titlecaseLetter
                       , Set.modifierLetter
                       , Set.otherLetter
                       , Set.letterNumber
-                      ]
+                      ])
     remainderOK   = firstLetterOK
-               <> mconcat
+               <> (filterBmpChars $ mconcat
                     [ Set.nonSpacingMark
                     , Set.spacingCombiningMark
                     , Set.decimalNumber
                     , Set.connectorPunctuation
-                    ]
+                    ])
+
+-- Javascript identifiers can only contain codepoints in the Basic Multilingual Plane
+-- that is, codepoints that can be encoded in UTF-16 without a surrogate pair (UCS-2)
+-- that is, codepoints that can fit in 16-bits, up to 0xffff (65535)
+filterBmpChars :: Set.CharSet -> Set.CharSet
+filterBmpChars = Set.filter (< '\65536')
 
 toJSHeader :: HeaderArg f -> Text
 toJSHeader (HeaderArg n)
