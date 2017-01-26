@@ -1,3 +1,9 @@
+0.9.1
+-----
+
+* Fix javascript function name generation
+* Allow servant-0.10
+
 0.5
 ----
 

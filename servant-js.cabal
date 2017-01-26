@@ -1,6 +1,5 @@
 name:                servant-js
-version:             0.9
-x-revision:          2
+version:             0.9.1
 synopsis:            Automatically derive javascript functions to query servant webservices.
 description:
   Automatically derive javascript functions to query servant webservices.
@@ -21,7 +20,7 @@ category:            Web
 build-type:          Simple
 cabal-version:       >=1.10
 homepage:            http://haskell-servant.readthedocs.org/
-Bug-reports:         http://github.com/haskell-servant/servant-js/issues
+bug-reports:         http://github.com/haskell-servant/servant-js/issues
 tested-with:         GHC==7.8.3, GHC==7.10.3, GHC==8.0.1
 extra-source-files:
   include/*.h
