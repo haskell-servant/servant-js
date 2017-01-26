@@ -1,5 +1,6 @@
 name:                servant-js
 version:             0.9
+x-revision:          2
 synopsis:            Automatically derive javascript functions to query servant webservices.
 description:
   Automatically derive javascript functions to query servant webservices.
@@ -45,8 +46,8 @@ library
                      , base-compat     >= 0.9
                      , charset         >= 0.3
                      , lens            >= 4
-                     , servant-foreign == 0.9.*
-                     , servant         == 0.9.*
+                     , servant-foreign >= 0.9 && <0.11
+                     , servant         >= 0.9 && <0.11
                      , text            >= 1.2  && < 1.3
 
   hs-source-dirs:      src
@@ -84,9 +85,10 @@ test-suite spec
   other-modules:
       Servant.JSSpec
       Servant.JSSpec.CustomHeaders
+  build-tool-depends: hspec-discover:hspec-discover >=2.3.0 && <2.5
   build-depends:     base
                    , base-compat
-                   , hspec >= 2.1.8
+                   , hspec >= 2.3.0 && <2.5
                    , hspec-expectations
                    , language-ecmascript >= 0.16
                    , lens
