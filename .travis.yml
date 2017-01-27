@@ -72,6 +72,8 @@ script:
  # this builds all libraries and executables (without tests/benchmarks)
  - rm -f cabal.project.freeze
  - cabal new-build -w ${HC} --disable-tests --disable-benchmarks
+ #  This builds example
+ - cabal new-build -w ${HC} --disable-tests --disable-benchmarks '--constraint=servant-js +example' servant-js:counter
  # this buinds all libraries and executables with servant==0.9
  - cabal new-build -w ${HC} --disable-tests --disable-benchmarks '--constraint=servant==0.9.*'
  # this builds all libraries and executables (including tests/benchmarks)
