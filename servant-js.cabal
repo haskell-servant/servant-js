@@ -1,6 +1,6 @@
 name:                servant-js
 version:             0.9.1
-x-revision:          1
+x-revision:          2
 synopsis:            Automatically derive javascript functions to query servant webservices.
 description:
   Automatically derive javascript functions to query servant webservices.
@@ -70,8 +70,8 @@ executable counter
                   , aeson            >= 0.7  && < 1.2
                   , filepath         >= 1
                   , lens             >= 4
-                  , servant          == 0.9.*
-                  , servant-server   == 0.9.*
+                  , servant
+                  , servant-server
                   , servant-js
                   , stm
                   , transformers
