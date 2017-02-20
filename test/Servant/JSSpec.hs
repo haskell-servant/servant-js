@@ -26,6 +26,7 @@ import           Test.QuickCheck              (Arbitrary (..),
 
 import           Servant.API.Internal.Test.ComprehensiveAPI
 import           Servant.API.ContentTypes
+import           Servant.API.QueryParam
 import           Servant.JS
 import           Servant.JS.Internal
 import qualified Servant.JS.Angular           as NG
@@ -42,6 +43,7 @@ _ = jsForAPI comprehensiveAPIWithoutRaw vanillaJS :: Text
 -- * specs
 
 type TestAPI = "simple" :> ReqBody '[JSON,FormUrlEncoded] Text :> Post '[JSON] Bool
+          :<|> "params" :> QueryParam "foo" Text :> QueryFlag "flag" :> Get '[JSON] Bool
           :<|> "has.extension" :> Get '[FormUrlEncoded,JSON] Bool
 
 type TopLevelRawAPI = "something" :> Get '[JSON] Int
