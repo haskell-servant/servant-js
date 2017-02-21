@@ -1,3 +1,8 @@
+Unreleased changes
+---
+
+* Fix code generation for query flag
+
 0.9.1
 -----
 

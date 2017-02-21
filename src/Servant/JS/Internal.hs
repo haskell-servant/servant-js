@@ -183,7 +183,7 @@ paramToStr qarg notTheEnd =
            <> "=' + encodeURIComponent("
            <> name
            <> if notTheEnd then ") + '" else ")"
-    Flag   -> name <> "="
+    Flag   -> name <> "'"
     List   -> name
            <> "[]=' + encodeURIComponent("
            <> name
