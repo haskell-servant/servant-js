@@ -29,28 +29,28 @@ generateVanillaJS = generateVanillaJSWith defCommonGeneratorOptions
 -- | js codegen using XmlHttpRequest
 generateVanillaJSWith :: CommonGeneratorOptions -> AjaxReq -> Text
 generateVanillaJSWith opts req = "\n" <>
-    fname <> " = function(" <> argsStr <> ")\n"
- <> "{\n"
+    fname <> " = function(" <> argsStr <> ") {\n"
  <> "  var xhr = new XMLHttpRequest();\n"
  <> "  xhr.open('" <> decodeUtf8 method <> "', " <> url <> ", true);\n"
  <>    reqheaders
- <> "  xhr.setRequestHeader(\"Accept\",\"application/json\");\n"
- <> (if isJust (req ^. reqBody) then "  xhr.setRequestHeader(\"Content-Type\",\"application/json\");\n" else "")
- <> "  xhr.onreadystatechange = function (e) {\n"
- <> "    if (xhr.readyState == 4) {\n"
- <> "      if (xhr.status == 204 || xhr.status == 205) {\n"
- <> "        onSuccess();\n"
- <> "      } else if (xhr.status >= 200 && xhr.status < 300) {\n"
- <> "        var value = JSON.parse(xhr.responseText);\n"
- <> "        onSuccess(value);\n"
+ <> "  xhr.setRequestHeader('Accept', 'application/json');\n"
+ <> (if isJust (req ^. reqBody) then "  xhr.setRequestHeader('Content-Type', 'application/json');\n" else "")
+ <> "  xhr.onreadystatechange = function () {\n"
+ <> "    var res = null;\n"
+ <> "    if (xhr.readyState === 4) {\n"
+ <> "      if (xhr.status === 204 || xhr.status === 205) {\n"
+ <> "        " <> onSuccess <> "();\n"
+ <> "      } else if (xhr.status >= 200 && xhr.status < 300 && xhr.responseType === 'json') {\n"
+ <> "        try { res = JSON.parse(xhr.responseText); } catch (e) { " <> onError <> "(e); }\n"
+ <> "        if (res) " <> onSuccess <> "(res);\n"
  <> "      } else {\n"
- <> "        var value = JSON.parse(xhr.responseText);\n"
- <> "        onError(value);\n"
+ <> "        try { res = JSON.parse(xhr.responseText); } catch (e) { " <> onError <> "(e); }\n"
+ <> "        if (res) " <> onError <> "(res);\n"
  <> "      }\n"
  <> "    }\n"
- <> "  }\n"
+ <> "  };\n"
  <> "  xhr.send(" <> dataBody <> ");\n"
- <> "}\n"
+ <> "};\n"
 
   where argsStr = T.intercalate ", " args
         args = captures
@@ -79,7 +79,7 @@ generateVanillaJSWith opts req = "\n" <>
 
         dataBody =
           if isJust (req ^. reqBody)
-            then "JSON.stringify(body)\n"
+            then "JSON.stringify(body)"
             else "null"
 
 
