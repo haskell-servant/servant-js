@@ -1,7 +1,10 @@
-Unreleased changes
----
+0.9.2
+-----
 
 * Fix code generation for query flag
+  ([#11](https://github.com/haskell-servant/servant-js/issues/11))
+* Improve error handling in vanilla backend
+  ([#9](https://github.com/haskell-servant/servant-js/pull/9))
 
 0.9.1
 -----
