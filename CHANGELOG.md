@@ -1,3 +1,9 @@
+0.9.3
+-------
+
+* Remove check of responseType in vanilla backend
+  ([#13](https://github.com/haskell-servant/servant-js/pull/13), [#14](https://github.com/haskell-servant/servant-js/issues/14))
+
 0.9.2
 -----
 
