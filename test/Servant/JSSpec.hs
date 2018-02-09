@@ -1,12 +1,16 @@
+{-# LANGUAGE CPP                 #-}
 {-# LANGUAGE DataKinds           #-}
 {-# LANGUAGE FlexibleInstances   #-}
-{-# LANGUAGE QuasiQuotes         #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TypeFamilies        #-}
 {-# LANGUAGE TypeOperators       #-}
 {-# LANGUAGE OverloadedStrings   #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
-
+#if __GLASGOW_HASKELL__ >= 800
+{-# OPTIONS_GHC -freduction-depth=100 #-}
+#else
+{-# OPTIONS_GHC -fcontext-stack=100 #-}
+#endif
 module Servant.JSSpec where
 
 import           Data.Either                  (isRight)
