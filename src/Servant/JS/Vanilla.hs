@@ -44,7 +44,8 @@ generateVanillaJSWith opts req = "\n" <>
  <> "        try { res = JSON.parse(xhr.responseText); } catch (e) { " <> onError <> "(e); }\n"
  <> "        if (res) " <> onSuccess <> "(res);\n"
  <> "      } else {\n"
- <> "        try { res = JSON.parse(xhr.responseText); } catch (e) { " <> onError <> "(e); }\n"
+ <> "        try { res = JSON.parse(xhr.responseText); } catch (e) { " <> onError <> "(" <>
+                if parseErrors opts then "e" else "xhr.reposnseText" <> "); }\n"
  <> "        if (res) " <> onError <> "(res);\n"
  <> "      }\n"
  <> "    }\n"

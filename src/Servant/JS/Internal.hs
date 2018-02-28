@@ -77,6 +77,8 @@ data CommonGeneratorOptions = CommonGeneratorOptions
     -- ^ namespace on which we define the foreign function (empty mean local var)
   , urlPrefix :: Text
     -- ^ a prefix we should add to the Url in the codegen
+  , parseErrors :: Bool
+    -- ^ if false the error callback won't try to parse error responses
   }
 
 -- | Default options.
@@ -89,6 +91,7 @@ data CommonGeneratorOptions = CommonGeneratorOptions
 -- >   , errorCallback = "onError"
 -- >   , moduleName = ""
 -- >   , urlPrefix = ""
+-- >   , parseErrors = True
 -- >   }
 -- @
 defCommonGeneratorOptions :: CommonGeneratorOptions
@@ -100,6 +103,7 @@ defCommonGeneratorOptions = CommonGeneratorOptions
   , errorCallback = "onError"
   , moduleName = ""
   , urlPrefix = ""
+  , parseErrors = True
   }
 
 -- | Attempts to reduce the function name provided to that allowed by @'Foreign'@.
