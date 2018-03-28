@@ -9,7 +9,7 @@ vanilla (framework-free) javascript code.
 
 ## Example
 
-Read more about the following example [here](https://github.com/haskell-servant/servant/tree/master/servant-js/examples#examples).
+Read more about the following example [here](https://github.com/haskell-servant/servant-js/tree/master/examples).
 
 ``` haskell
 {-# LANGUAGE DataKinds #-}
