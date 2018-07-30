@@ -107,6 +107,12 @@ module Servant.JS
   , AxiosOptions(..)
   , defAxiosOptions
 
+  , -- * Fetch code generation
+    fetch
+  , fetchWith
+  , FetchOptions(..)
+  , defFetchOptions
+
   , -- * Misc.
     listFromAPI
   , javascript
@@ -122,6 +128,7 @@ import           Data.Text.IO        (writeFile)
 import           Servant.API.ContentTypes
 import           Servant.JS.Angular
 import           Servant.JS.Axios
+import           Servant.JS.Fetch
 import           Servant.JS.Internal
 import           Servant.JS.JQuery
 import           Servant.JS.Vanilla

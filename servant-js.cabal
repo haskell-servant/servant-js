@@ -43,6 +43,7 @@ library
                        Servant.JS.Internal
                        Servant.JS.JQuery
                        Servant.JS.Vanilla
+                       Servant.JS.Fetch
   build-depends:       base            >= 4.7 && <4.12
                      , base-compat     >= 0.9
                      , charset         >= 0.3
