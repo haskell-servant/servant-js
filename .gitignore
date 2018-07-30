@@ -1,3 +1,5 @@
 dist/
 dist-newstyle/
 .stack-work/
+examples/**/*/api.js
+examples/**/*/api.service.js
