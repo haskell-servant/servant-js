@@ -95,6 +95,8 @@ main = do
 
   writeJSForAPI testApi (axios defAxiosOptions) (www </> "axios" </> "api.js")
 
+  writeJSForAPI testApi (fetch defFetchOptions) (www </> "fetch" </> "api.js")
+
   writeServiceJS (www </> "angular" </> "api.service.js")
 
   -- setup a shared counter
