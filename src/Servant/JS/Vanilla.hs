@@ -34,7 +34,7 @@ generateVanillaJSWith opts req = "\n" <>
  <> "  xhr.open('" <> decodeUtf8 method <> "', " <> url <> ", true);\n"
  <>    reqheaders
  <> "  xhr.setRequestHeader('Accept', 'application/json');\n"
- <> (if isJust (req ^. reqBody) then "  xhr.setRequestHeader('Content-Type', 'application/json');\n" else "")
+ <> (if isJust (req ^. reqBody) && (req ^. reqBodyIsJSON)  then "  xhr.setRequestHeader('Content-Type', 'application/json');\n" else "")
  <> "  xhr.onreadystatechange = function () {\n"
  <> "    var res = null;\n"
  <> "    if (xhr.readyState === 4) {\n"
@@ -79,7 +79,7 @@ generateVanillaJSWith opts req = "\n" <>
 
         dataBody =
           if isJust (req ^. reqBody)
-            then "JSON.stringify(body)"
+            then if (req ^. reqBodyIsJSON) then "JSON.stringify(body)" else "body"
             else "null"
 
 

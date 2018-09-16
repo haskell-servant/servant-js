@@ -47,7 +47,7 @@ library
                      , base-compat     >= 0.9
                      , charset         >= 0.3
                      , lens            >= 4
-                     , servant-foreign >= 0.9 && <0.12
+                     , servant-foreign >= 0.11.2 && <0.12
                      , servant         >= 0.9 && <0.15
                      , text            >= 1.2  && < 1.3
 
