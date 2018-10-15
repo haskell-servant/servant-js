@@ -1,7 +1,9 @@
 name:                servant-js
 version:             0.9.3.2
-x-revision:          2
+x-revision:          3
+
 synopsis:            Automatically derive javascript functions to query servant webservices.
+category:            Web, Servant
 description:
   Automatically derive javascript functions to query servant webservices.
   .
@@ -12,17 +14,24 @@ description:
   webservice calls.
   .
   <https://github.com/haskell-servant/servant-js/blob/master/CHANGELOG.md CHANGELOG>
+
 license:             BSD3
 license-file:        LICENSE
 author:              Servant Contributors
 maintainer:          haskell-servant-maintainers@googlegroups.com
 copyright:           2015-2016 Servant Contributors
-category:            Web, Servant
 build-type:          Simple
 cabal-version:       >=1.10
 homepage:            http://haskell-servant.readthedocs.org/
 bug-reports:         http://github.com/haskell-servant/servant-js/issues
-tested-with:         GHC==7.8.4, GHC==7.10.3, GHC==8.0.2, GHC==8.2.2, GHC==8.4.3
+tested-with:
+  GHC ==7.8.4
+   || ==7.10.3
+   || ==8.0.2
+   || ==8.2.2
+   || ==8.4.4
+   || ==8.6.1
+
 extra-source-files:
   include/*.h
   CHANGELOG.md
@@ -43,7 +52,7 @@ library
                        Servant.JS.Internal
                        Servant.JS.JQuery
                        Servant.JS.Vanilla
-  build-depends:       base            >= 4.7 && <4.12
+  build-depends:       base            >= 4.7 && <4.13
                      , base-compat     >= 0.9
                      , charset         >= 0.3
                      , lens            >= 4
