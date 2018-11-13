@@ -1,9 +1,11 @@
 {-#LANGUAGE OverloadedStrings #-}
 module Servant.JS.Axios where
 
+import           Prelude ()
+import           Prelude.Compat
+
 import           Control.Lens
 import           Data.Maybe (isJust)
-import           Data.Monoid
 import           Data.Text (Text)
 import           Data.Text.Encoding (decodeUtf8)
 import qualified Data.Text as T
