@@ -45,10 +45,13 @@ module Servant.JS.Internal
   , Header
   ) where
 
+import           Prelude ()
+import           Prelude.Compat
+
 import           Control.Lens ((^.))
 import qualified Data.CharSet as Set
 import qualified Data.CharSet.Unicode.Category as Set
-import           Data.Monoid
+
 import qualified Data.Text as T
 import           Data.Text (Text)
 import           Servant.Foreign
