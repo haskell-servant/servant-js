@@ -69,7 +69,7 @@ server counter = counterPlusOne counter     -- (+1) on the TVar
 -- the whole server, including static file serving
 server' :: TVar Counter -> Server TestApi'
 server' counter = server counter
-             :<|> serveDirectory www -- serve static files
+             :<|> serveDirectoryFileServer www -- serve static files
 
 runServer :: TVar Counter -- ^ shared variable for the counter
           -> Int          -- ^ port the server should listen on
