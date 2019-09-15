@@ -1,6 +1,6 @@
 name:                servant-js
 version:             0.9.4
-x-revision:          1
+x-revision:          2
 
 synopsis:            Automatically derive javascript functions to query servant webservices.
 category:            Web, Servant
@@ -28,7 +28,8 @@ tested-with:
   GHC ==8.0.2
    || ==8.2.2
    || ==8.4.4
-   || ==8.6.3
+   || ==8.6.5
+   || ==8.8.1
 
 extra-source-files:
   include/*.h
@@ -50,10 +51,10 @@ library
                        Servant.JS.Internal
                        Servant.JS.JQuery
                        Servant.JS.Vanilla
-  build-depends:       base            >= 4.9     && <4.13
-                     , base-compat     >= 0.10.5  && <0.11
+  build-depends:       base            >= 4.9     && <4.14
+                     , base-compat     >= 0.10.5  && <0.12
                      , charset         >= 0.3.7.1 && <0.4
-                     , lens            >= 4.17    && <4.18
+                     , lens            >= 4.17    && <4.19
                      , servant-foreign >= 0.15    && <0.16
                      , servant         >= 0.15    && <0.17
                      , text            >= 1.2.3.0 && < 1.3

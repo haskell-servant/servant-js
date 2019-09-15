@@ -1,5 +1,8 @@
 branches: master
 
+-- language-ecmascript doesn't work with GHC-8.8
+tests: <8.8
+
 constraint-set servant-0.15
   ghc: >= 8.0 && <8.8
   constraints: servant ==0.15.*
