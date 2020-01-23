@@ -1,6 +1,5 @@
 name:                servant-js
-version:             0.9.4
-x-revision:          2
+version:             0.9.4.1
 
 synopsis:            Automatically derive javascript functions to query servant webservices.
 category:            Web, Servant
@@ -56,7 +55,7 @@ library
                      , charset         >= 0.3.7.1 && <0.4
                      , lens            >= 4.17    && <4.19
                      , servant-foreign >= 0.15    && <0.16
-                     , servant         >= 0.15    && <0.17
+                     , servant         >= 0.15    && <0.18
                      , text            >= 1.2.3.0 && < 1.3
 
   hs-source-dirs:      src

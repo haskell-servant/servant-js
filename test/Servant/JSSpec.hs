@@ -28,7 +28,7 @@ import           Test.QuickCheck              (Arbitrary (..),
                                                choose, listOf,
                                                property)
 
-import           Servant.API.Internal.Test.ComprehensiveAPI
+import           Servant.Test.ComprehensiveAPI
 import           Servant.API.ContentTypes
 import           Servant.API.QueryParam
 import           Servant.JS
