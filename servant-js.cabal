@@ -50,10 +50,10 @@ library
                        Servant.JS.Internal
                        Servant.JS.JQuery
                        Servant.JS.Vanilla
-  build-depends:       base            >= 4.9     && <4.14
+  build-depends:       base            >= 4.9     && <4.15
                      , base-compat     >= 0.10.5  && <0.12
                      , charset         >= 0.3.7.1 && <0.4
-                     , lens            >= 4.17    && <4.19
+                     , lens            >= 4.17    && <4.20
                      , servant-foreign >= 0.15    && <0.16
                      , servant         >= 0.15    && <0.18
                      , text            >= 1.2.3.0 && < 1.3
