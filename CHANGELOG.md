@@ -1,10 +1,15 @@
-0.9.4
------
+0.9.4.2
+-------
+
+* relax version bounds (for support of ghc-8.10.1)
+
+0.9.4.1
+-------
 
 * `servant-0.15` support
 
 0.9.3
--------
+-----
 
 * Remove check of responseType in vanilla backend
   ([#13](https://github.com/haskell-servant/servant-js/pull/13), [#14](https://github.com/haskell-servant/servant-js/issues/14))

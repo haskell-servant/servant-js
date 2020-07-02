@@ -1,5 +1,5 @@
 name:                servant-js
-version:             0.9.4.1
+version:             0.9.4.2
 
 synopsis:            Automatically derive javascript functions to query servant webservices.
 category:            Web, Servant
