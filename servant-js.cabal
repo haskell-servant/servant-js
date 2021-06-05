@@ -28,7 +28,8 @@ tested-with:
    || ==8.2.2
    || ==8.4.4
    || ==8.6.5
-   || ==8.8.1
+   || ==8.8.4
+   || ==8.10.4
 
 extra-source-files:
   include/*.h
@@ -50,7 +51,7 @@ library
                        Servant.JS.Internal
                        Servant.JS.JQuery
                        Servant.JS.Vanilla
-  build-depends:       base            >= 4.9     && <4.15
+  build-depends:       base            >= 4.9     && <4.16
                      , base-compat     >= 0.10.5  && <0.12
                      , charset         >= 0.3.7.1 && <0.4
                      , lens            >= 4.17    && <4.20
