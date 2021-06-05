@@ -54,7 +54,7 @@ library
   build-depends:       base            >= 4.9     && <4.16
                      , base-compat     >= 0.10.5  && <0.12
                      , charset         >= 0.3.7.1 && <0.4
-                     , lens            >= 4.17    && <4.20
+                     , lens            >= 4.17    && <5.1
                      , servant-foreign >= 0.15    && <0.16
                      , servant         >= 0.15    && <0.18
                      , text            >= 1.2.3.0 && < 1.3
