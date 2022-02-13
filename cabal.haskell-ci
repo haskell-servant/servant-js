@@ -1,16 +1,20 @@
 branches: master
 
+allow-failures: >= 9.2
+
+distribution: focal
+
 -- language-ecmascript doesn't work with GHC-8.8
 tests: <8.8
-
-constraint-set servant-0.15
-  ghc: >= 8.0 && <8.8
-  constraints: servant ==0.15.*
-
-constraint-set servant-0.16
-  ghc: >= 8.0 && <8.10
-  constraints: servant ==0.16.*
 
 constraint-set servant-0.17
   ghc: >= 8.0 && <8.10
   constraints: servant ==0.17.*
+
+constraint-set servant-0.18
+  ghc: >= 8.0 && <9.0
+  constraints: servant ==0.19.*
+
+constraint-set servant-0.19
+  ghc: >= 8.0 && <9.4
+  constraints: servant ==0.18.*
