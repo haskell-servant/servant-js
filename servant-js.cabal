@@ -50,12 +50,12 @@ library
                        Servant.JS.Internal
                        Servant.JS.JQuery
                        Servant.JS.Vanilla
-  build-depends:       base            >= 4.9     && <4.18
+  build-depends:       base            >= 4.9     && <4.19
                      , base-compat     >= 0.10.5  && <0.14
                      , charset         >= 0.3.7.1 && <0.4
                      , lens            >= 4.17    && <5.3
-                     , servant-foreign >= 0.15    && <0.16
-                     , servant         >= 0.15    && <0.20
+                     , servant-foreign >= 0.15    && <0.17
+                     , servant         >= 0.15    && <0.21
                      , text            >= 1.2.3.0 && < 1.3 || >= 2.0 && < 2.1
 
   hs-source-dirs:      src
