@@ -36,7 +36,7 @@ generateVanillaJSWith opts req = "\n" <>
  <> "  xhr.open('" <> decodeUtf8 method <> "', " <> url <> ", true);\n"
  <>    reqheaders
  <> "  xhr.setRequestHeader('Accept', 'application/json');\n"
- <> (if isJust (req ^. reqBody) && (req ^. reqBodyContentType == ReqBodyJSON)  then "  xhr.setRequestHeader('Content-Type', 'application/json');\n" else "")
+ <> (if isJust (req ^. reqBody) && (req ^. _reqBodyContentType == ReqBodyJSON)  then "  xhr.setRequestHeader('Content-Type', 'application/json');\n" else "")
  <> "  xhr.onreadystatechange = function () {\n"
  <> "    var res = null;\n"
  <> "    if (xhr.readyState === 4) {\n"
@@ -46,7 +46,8 @@ generateVanillaJSWith opts req = "\n" <>
  <> "        try { res = JSON.parse(xhr.responseText); } catch (e) { " <> onError <> "(e); }\n"
  <> "        if (res) " <> onSuccess <> "(res);\n"
  <> "      } else {\n"
- <> "        try { res = JSON.parse(xhr.responseText); } catch (e) { " <> onError <> "(e); }\n"
+ <> "        try { res = JSON.parse(xhr.responseText); } catch (e) { " <> onError <> "(" <>
+                (if ignoreErrorParsingErrors opts then "xhr.responseText" else "e") <> "); }\n"
  <> "        if (res) " <> onError <> "(res);\n"
  <> "      }\n"
  <> "    }\n"
@@ -81,7 +82,7 @@ generateVanillaJSWith opts req = "\n" <>
 
         dataBody =
           if isJust (req ^. reqBody)
-            then if (req ^. reqBodyContentType == ReqBodyJSON) then "JSON.stringify(body)" else "body"
+            then if (req ^. _reqBodyContentType == ReqBodyJSON) then "JSON.stringify(body)" else "body"
             else "null"
 
 
