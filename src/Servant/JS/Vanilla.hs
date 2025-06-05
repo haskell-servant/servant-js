@@ -9,7 +9,7 @@ import           Data.Maybe (isJust)
 import           Data.Text (Text)
 import           Data.Text.Encoding (decodeUtf8)
 import qualified Data.Text as T
-import           Servant.Foreign hiding (header)
+import           Servant.Foreign
 import           Servant.JS.Internal
 
 -- | Generate vanilla javascript functions to make AJAX requests
